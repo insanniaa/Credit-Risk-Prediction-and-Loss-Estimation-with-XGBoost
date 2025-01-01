@@ -1,1 +1,82 @@
+## Credit Risk Prediction and Loss Estimation with XGBoost
 
+This project develops a predictive model for credit risk and loss estimation using XGBoost. It analyzes customer historical data, including demographics, credit history, and financial capacity, to identify factors influencing default risk and estimate potential financial losses.
+
+---
+
+## Data Attributes
+
+- **id**: Unique ID assigned by LendingClub for each loan application.
+- **member_id**: Unique ID for the member or user applying for the loan.
+- **loan_amnt**: Total loan amount requested by the borrower.
+- **funded_amnt**: Total amount of funding approved for the loan.
+- **funded_amnt_inv**: Amount of funding provided by investors for the loan.
+- **term**: Loan repayment term (in months), typically 36 or 60 months.
+- **int_rate**: Interest rate applied to the loan, in percentage.
+- **installment**: Monthly installment the borrower must pay to repay the loan.
+- **grade**: Credit grade assigned by LendingClub, such as A, B, C, etc.
+- **sub_grade**: Subcategory of the credit grade, such as A1, B2, etc.
+- **emp_title**: Job title or position of the borrower as reported during the loan application.
+- **emp_length**: Length of employment in years.
+- **home_ownership**: Borrower’s homeownership status (RENT, OWN, MORTGAGE, etc.).
+- **annual_inc**: Borrower’s reported annual income.
+- **verification_status**: Verification status of the borrower’s income (Verified, Source Verified, Not Verified).
+- **issue_d**: Month when the loan was issued.
+- **loan_status**: Current loan status (Fully Paid, Charged Off, Current, etc.).
+- **pymnt_plan**: Indicator of whether a payment plan has been agreed upon (y/n).
+- **url**: URL directing to the loan details on LendingClub.
+- **desc**: Description of the loan provided by the borrower.
+- **purpose**: Purpose of the loan (e.g., debt consolidation, credit card, home improvement).
+- **title**: Short title of the loan description.
+- **zip_code**: Borrower's postal code.
+- **addr_state**: State where the borrower resides.
+- **dti**: Debt-to-income ratio of the borrower.
+- **delinq_2yrs**: Number of delinquencies in the last 2 years.
+- **earliest_cr_line**: Date of the borrower’s first credit line opening.
+- **inq_last_6mths**: Number of credit inquiries in the last 6 months.
+- **mths_since_last_delinq**: Number of months since the last delinquency.
+- **mths_since_last_record**: Number of months since the last negative record on the credit report.
+- **open_acc**: Number of open credit accounts in the borrower’s credit report.
+- **pub_rec**: Number of public negative records, such as bankruptcies.
+- **revol_bal**: Borrower’s revolving balance.
+- **revol_util**: Percentage of revolving credit utilization out of the total available credit.
+- **total_acc**: Total number of credit accounts of the borrower.
+- **initial_list_status**: Initial listing status of the loan (f: Fractional, w: Whole).
+- **out_prncp**: Outstanding principal remaining on the loan.
+- **out_prncp_inv**: Outstanding principal remaining owed to investors.
+- **total_pymnt**: Total payments made by the borrower.
+- **total_pymnt_inv**: Total payments received by investors.
+- **total_rec_prncp**: Total principal payments received.
+- **total_rec_int**: Total interest payments received.
+- **total_rec_late_fee**: Total late fees received.
+- **recoveries**: Amount recovered after a loan defaults.
+- **collection_recovery_fee**: Fee charged for recovery efforts.
+- **last_pymnt_d**: Date of the borrower’s last payment.
+- **last_pymnt_amnt**: Amount of the last payment made by the borrower.
+- **next_pymnt_d**: Date of the next scheduled payment.
+- **last_credit_pull_d**: Date of the borrower’s last credit report check.
+- **collections_12_mths_ex_med**: Amount of collections in the last 12 months excluding medical collections.
+- **mths_since_last_major_derog**: Number of months since the last major derogatory event.
+- **policy_code**: Policy code used (1 for public, 2 for new products not available to the public).
+- **application_type**: Type of application (INDIVIDUAL or JOINT).
+- **annual_inc_joint**: Combined annual income for joint applications.
+- **dti_joint**: Combined debt-to-income ratio for joint applications.
+- **verification_status_joint**: Verification status for joint application.
+- **acc_now_delinq**: Number of accounts currently in delinquency.
+- **tot_coll_amt**: Total amount of collections that are overdue.
+- **tot_cur_bal**: Total current balance of all credit accounts.
+- **open_acc_6m**: Number of open accounts in the last 6 months.
+- **open_il_6m**: Number of installment accounts opened in the last 6 months.
+- **open_il_12m**: Number of installment accounts opened in the last 12 months.
+- **open_il_24m**: Number of installment accounts opened in the last 24 months.
+- **mths_since_rcnt_il**: Number of months since the most recent installment account was opened.
+- **total_bal_il**: Total balance of all installment accounts.
+- **il_util**: Ratio of current balance to credit limit on all installment accounts.
+- **open_rv_12m**: Number of revolving accounts opened in the last 12 months.
+- **open_rv_24m**: Number of revolving accounts opened in the last 24 months.
+- **max_bal_bc**: Maximum current balance of all revolving accounts.
+- **all_util**: Ratio of current balance to credit limit across all credit lines.
+- **total_rev_hi_lim**: Total maximum credit limit for all revolving accounts.
+- **inq_fi**: Number of credit inquiries for personal finance purposes.
+- **total_cu_tl**: Total number of credit lines.
+- **inq_last_12m**: Number of credit inquiries in the last 12 months.
